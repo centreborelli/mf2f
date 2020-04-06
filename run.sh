@@ -11,6 +11,9 @@ format=03
 noise_level=25
 
 
+
+PYTHON=python3.6
+
 ##make data folder and sub-folders
 if [ ! -d $data ];then
     mkdir $data
@@ -69,7 +72,7 @@ echo collision masks computed
 
 ##compute warping_error_mask
 cd warping_res_mask
-python3.6 compute_threshold.py --dummy $data --output $mask_warping_res --input $input --flow $flow --first $first --last $last
+$PYTHON compute_threshold.py --dummy $data --output $mask_warping_res --input $input --flow $flow --first $first --last $last
 rm $data/{downs.tiff,downs_warp.tiff,dwo.png,mask_invalid_pixels.png,warping_error.tiff,warp.tiff,WERR.tiff}
 cd ..
 echo warping res masks computed
@@ -77,23 +80,23 @@ echo warping res masks computed
 
 
 ## compute the results with FastDVDnet-8sigmas
-python3.6 video_f2f_8sigmas.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $eight_sigmas --first $first --last $last --noise_level $noise_level 
+$PYTHON video_f2f_8sigmas.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $eight_sigmas --first $first --last $last --noise_level $noise_level 
 echo FastDVDnet-8sigmas computed
 
 ##compute the results with the method online no teacher
-python3.6 video_f2f_online_no_teacher.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $results_online_no_teach --first $first --last $last --noise_level $noise_level
+$PYTHON video_f2f_online_no_teacher.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $results_online_no_teach --first $first --last $last --noise_level $noise_level
 echo online no teacher computed
 
 
 ##compute the results with the method online with teacher
-python3.6 video_f2f_online_with_teacher.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $results_online_with_teach --first $first --last $last --teacher_outputs $eight_sigmas --noise_level $noise_level
+$PYTHON video_f2f_online_with_teacher.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $results_online_with_teach --first $first --last $last --teacher_outputs $eight_sigmas --noise_level $noise_level
 echo online with teacher computed
 
 
 ##compute the results with the method offline no teacher
-python3.6 video_f2f_offline_no_teacher.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $results_offline_no_teach --first $first --last $last --noise_level $noise_level
+$PYTHON video_f2f_offline_no_teacher.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $results_offline_no_teach --first $first --last $last --noise_level $noise_level
 echo offline no teacher computed
 
 
 ##compute the results with the method offline with teacher
-python3.6 video_f2f_offline_with_teacher.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $results_offline_with_teach --first $first --last $last --teacher_outputs $eight_sigmas --noise_level $noise_level
+$PYTHON video_f2f_offline_with_teacher.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $results_offline_with_teach --first $first --last $last --teacher_outputs $eight_sigmas --noise_level $noise_level
