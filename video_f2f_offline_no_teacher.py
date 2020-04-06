@@ -373,7 +373,7 @@ def MF2F(**args):
 
         print("Itération = {:03d}, PSNR training stack = {:5.3f}, PSNR eval stack = {:5.3f}, SSIM training stack = {:4.3f}, SSIM eval stack = {:4.3f}   {:1d}".format(i, quant_training_stack, quant_eval_stack, ssim_training, ssim_eval, value))
 
-        iio.write(output_path + "training_{:03d}".format(i), 255*outimg) 
+        iio.write(output_path + "training_{:03d}.png".format(i), 255*outimg) 
         iio.write(args['output']%(i), 255*outimg2) 
 
         list_PSNR_training.append(quant_training_stack)
