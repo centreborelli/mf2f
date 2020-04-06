@@ -269,7 +269,7 @@ def MF2F(**args):
         stack = torch.stack(inframes, dim=0).contiguous().view((1, 5*C, H, W)).cuda()
         
         flow                 = gives_flow(args['flow'] % (i-1), H, W)
-        mask, exclusive_mask = gives_masks(args['mask_collition']%(i-1), args['mask_warping_res']%(i-1), H, W)
+        mask, exclusive_mask = gives_masks(args['mask_collision']%(i-1), args['mask_warping_res']%(i-1), H, W)
 
         model.eval()
 
@@ -400,7 +400,7 @@ if __name__ == "__main__":
     parser.add_argument("--input"                   , type=str  , default=""               , help='path to input frames (C type)')
     parser.add_argument("--ref"                     , type=str  , default=""               , help='path to reference frames (C type), against which the psnr is going to be computed')
     parser.add_argument("--flow"                    , type=str  , default=""               , help='path to optical flow (C type)')
-    parser.add_argument("--mask_collition"          , type=str  , default=""               , help='path to_collition mask(C type)')
+    parser.add_argument("--mask_collision"          , type=str  , default=""               , help='path to_collision mask(C type)')
     parser.add_argument("--mask_warping_res"        , type=str  , default=""               , help='path to mask based on warping residues (C type)')
     parser.add_argument("--output"                  , type=str  , default="./%03d.png"     , help='path to output image (C type)')
     parser.add_argument("--first"                   , type=int  , default=1                , help='index first frame')
