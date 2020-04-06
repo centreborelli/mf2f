@@ -306,7 +306,7 @@ def MF2F(**args):
             
         #store the result
         iio.write(args['output']%i, (outimg2*255))
-        iio.write(output_path + "training{:03d}.png".format(i), (outimg*255))
+        iio.write(output_path + "training_{:03d}.png".format(i), (outimg*255))
 
         # Compute the PSNR according to the reference frame
         # Load frame to compute the PSNR
