@@ -287,7 +287,7 @@ def MF2F(**args):
             fastdvdnet1 = torch.tensor(fastdvdnet1).cuda()
 
             flow1 = gives_flow(args['flow'] % (i-1), H, W)
-            mask1, exclusive_mask1 = gives_masks(args['mask_collition']%(i-1), args['mask_warping_res']%(i-1), H, W)
+            mask1, exclusive_mask1 = gives_masks(args['mask_collision']%(i-1), args['mask_warping_res']%(i-1), H, W)
             
         else:
             inframes = [ut_moins_4, ut_moins_2, ut, ut_plus_2, ut_plus_4]
@@ -300,7 +300,7 @@ def MF2F(**args):
             fastdvdnet2 = torch.tensor(fastdvdnet2).cuda()
 
             flow2 = gives_flow(args['flow'] % (i-1), H, W)
-            mask2, exclusive_mask2 = gives_masks(args['mask_collition']%(i-1), args['mask_warping_res']%(i-1), H, W)
+            mask2, exclusive_mask2 = gives_masks(args['mask_collision']%(i-1), args['mask_warping_res']%(i-1), H, W)
         
             model.eval()
             optimizer_student.zero_grad()
@@ -375,7 +375,7 @@ if __name__ == "__main__":
     parser.add_argument("--input"           , type=str  , default=""               , help='path to input frames (C type)')
     parser.add_argument("--ref"             , type=str  , default=""               , help='path to reference frames (C type), against which the psnr is going to be computed')
     parser.add_argument("--flow"            , type=str  , default=""               , help='path to optical flow (C type)')
-    parser.add_argument("--mask_collition"  , type=str  , default=""               , help='path to collition mask (C type)')
+    parser.add_argument("--mask_collision"  , type=str  , default=""               , help='path to collision mask (C type)')
     parser.add_argument("--mask_warping_res", type=str  , default=""               , help='path to warping res mask (C type)')
     parser.add_argument("--teacher_outputs" , type=str  , default=""               , help='path to precomputed teacher outputs (fine-tuning only on sigma) (C type)')
     parser.add_argument("--output"          , type=str  , default="./%03d.png"     , help='path to output image (C type)')
