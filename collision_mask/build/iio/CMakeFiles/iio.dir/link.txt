@@ -1,0 +1,2 @@
+/usr/bin/ar qc libiio.a  CMakeFiles/iio.dir/iio.c.o
+/usr/bin/ranlib libiio.a

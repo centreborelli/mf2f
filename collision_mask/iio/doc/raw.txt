@@ -1,0 +1,13 @@
+Special input filenames:
+
+zero:320x200
+zero:320x200x3
+RAW[rawstring]:filename
+
+
+rawstring: a comma separated list of variable assignments
+variable assignment: "%c%s" % (varname, value)
+varname: w=width, h=height, p=pixel dimension, t=sample type, o=offset bytes
+boolean vars: e=endianness, b=broken
+value: atoizable-integer, @address/size
+(the @ notation reads the value from an addres at the header)

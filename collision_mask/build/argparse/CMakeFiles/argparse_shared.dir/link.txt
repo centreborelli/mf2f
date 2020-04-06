@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC  -fopenmp -O3 -DNDEBUG -Wall -ggdb -O6 -w -s -ffast-math -fno-finite-math-only -fomit-frame-pointer -fstrength-reduce -w -fPIC -O3 -g -ggdb -Wall -Wextra  -shared -Wl,-soname,libargparse_shared.so -o libargparse_shared.so CMakeFiles/argparse_shared.dir/argparse.c.o -lm 
