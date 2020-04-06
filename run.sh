@@ -18,8 +18,8 @@ fi
 if [ ! -d $data/flow ];then
     mkdir $data/flow
 fi
-if [ ! -d $data/mask_collition ];then
-    mkdir $data/mask_collition
+if [ ! -d $data/mask_collision ];then
+    mkdir $data/mask_collision
 fi
 if [ ! -d $data/mask_warping_res ];then
     mkdir $data/mask_warping_res
@@ -44,7 +44,7 @@ fi
 
 ##useful paths
 flow=$data/flow/%${format}d.flo
-mask_collition=$data/mask_collition/%${format}d.png
+mask_collision=$data/mask_collision/%${format}d.png
 mask_warping_res=$data/mask_warping_res/%${format}d.png
 eight_sigmas=$data/results_8sigmas/%${format}d.tiff
 results_online_no_teach=$data/results_online_no_teacher/%${format}d.png
@@ -61,11 +61,11 @@ bash tvl1flow.sh $input $first $(($last-1)) $flow
 cd ..
 echo flows computed
 
-##compute collition mask
-cd collition_mask
-bash compute_mask.sh $flow $first $(($last-1)) $mask_collition
+##compute collision mask
+cd collision_mask
+bash compute_mask.sh $flow $first $(($last-1)) $mask_collision
 cd ..
-echo collition masks computed
+echo collision masks computed
 
 ##compute warping_error_mask
 cd warping_res_mask
@@ -77,23 +77,23 @@ echo warping res masks computed
 
 
 ## compute the results with FastDVDnet-8sigmas
-python3.6 video_f2f_8sigmas.py --input $input --ref $ref --flow $flow --mask_collition $mask_collition --mask_warping_res $mask_warping_res --output $eight_sigmas --first $first --last $last --noise_level $noise_level 
+python3.6 video_f2f_8sigmas.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $eight_sigmas --first $first --last $last --noise_level $noise_level 
 echo FastDVDnet-8sigmas computed
 
 ##compute the results with the method online no teacher
-python3.6 video_f2f_online_no_teacher.py --input $input --ref $ref --flow $flow --mask_collition $mask_collition --mask_warping_res $mask_warping_res --output $results_online_no_teach --first $first --last $last --noise_level $noise_level
+python3.6 video_f2f_online_no_teacher.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $results_online_no_teach --first $first --last $last --noise_level $noise_level
 echo online no teacher computed
 
 
 ##compute the results with the method online with teacher
-python3.6 video_f2f_online_with_teacher.py --input $input --ref $ref --flow $flow --mask_collition $mask_collition --mask_warping_res $mask_warping_res --output $results_online_with_teach --first $first --last $last --teacher_outputs $eight_sigmas --noise_level $noise_level
+python3.6 video_f2f_online_with_teacher.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $results_online_with_teach --first $first --last $last --teacher_outputs $eight_sigmas --noise_level $noise_level
 echo online with teacher computed
 
 
 ##compute the results with the method offline no teacher
-python3.6 video_f2f_offline_no_teacher.py --input $input --ref $ref --flow $flow --mask_collition $mask_collition --mask_warping_res $mask_warping_res --output $results_offline_no_teach --first $first --last $last --noise_level $noise_level
+python3.6 video_f2f_offline_no_teacher.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $results_offline_no_teach --first $first --last $last --noise_level $noise_level
 echo offline no teacher computed
 
 
 ##compute the results with the method offline with teacher
-python3.6 video_f2f_offline_with_teacher.py --input $input --ref $ref --flow $flow --mask_collition $mask_collition --mask_warping_res $mask_warping_res --output $results_offline_with_teach --first $first --last $last --teacher_outputs $eight_sigmas --noise_level $noise_level
+python3.6 video_f2f_offline_with_teacher.py --input $input --ref $ref --flow $flow --mask_collision $mask_collision --mask_warping_res $mask_warping_res --output $results_offline_with_teach --first $first --last $last --teacher_outputs $eight_sigmas --noise_level $noise_level
