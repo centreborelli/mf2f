@@ -1,1 +1,0 @@
-/usr/bin/cc  -fopenmp -O3 -DNDEBUG -Wall -ggdb -O6 -w -s -ffast-math -fno-finite-math-only -fomit-frame-pointer -fstrength-reduce    -rdynamic CMakeFiles/warp-bicubic.dir/warp-bicubic.c.o  -o bin/warp-bicubic iio/libiio.a argparse/libargparse.a -lpng -ltiff -ljpeg -lm 
