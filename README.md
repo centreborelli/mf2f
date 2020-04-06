@@ -2,12 +2,13 @@ Multi Frame2Frame
 =========================================================================
 DEPENDANCIES
 ------------
-TO DO 
-- python modules
+
+The script for each method are written in python3. We recommend to use a version >= 3.6 to prevent from warning depricated.
+You should have installed the modules argparse, iio, numpy, os, scipy, scikit-image qnd torchvision.
 - iio github
 - Enric's imscript github
 
-USAGE OF THE END TO END CODE
+USAGE OF THE END-TO-END CODE
 ----------------------------
 
 Run the end-to-end script using the command:</br>
@@ -41,6 +42,7 @@ It will contain eight subfolders:
 RESULTS FOLDER CONTAIN
 ----------------------
 
-Each result folder (results_8sigmas, results_online_no_teacher, results_online_with_teacher, results_offline_no_teacher, results_offline_with_teacher) contains the result frames obtained by evaluating the fine-tuned network on the training stack (file `training_%03d.png`) and on the natural stack (file `%03d.png`).
+Each result folder (results_8sigmas, results_online_no_teacher, results_online_with_teacher, results_offline_no_teacher, results_offline_with_teacher) contains the result frames obtained by evaluating the fine-tuned network on the training stack (file `training_%03d.png`) and on the natural stack (file `%03d.png`). The first and last four result frames are not computed by any of the methods.
 In the online methods, these are the results of the so far fine-tuned network. In the offline methods, theses are the results of the final fine-tuned network. 
 In addition, the PSNR and SSIM values are stored in file respectively called PSNR.txt and SSIM.txt for the evaluation with the natural stack and PSNR_training.txt, SSIM_training.txt for the evaluation with the training stack. The offline results subfolders also contain files PSNR_tot.txt and SSIM_tot.txt which are the PSNR and SSIM value evaluated on the natural stack for every loss computations for the whole offline fine-tuning.
+Moreover, in the file `final_mf2f.pth`, the networks weight and the optimizer parameters are also saved for each method in the corresponding folder.
