@@ -1,12 +1,12 @@
 Multi Frame2Frame
 =========================================================================
-DEPENDANCIES
+DEPENDENCIES
 ------------
 
-The script for each method are written in python3. We recommend to use a version >= 3.6 to prevent from warning depricated.
+The script for each method are written in python3. We recommend to use a version >= 3.6 to prevent from warning deprecated.
 You should have installed the modules argparse, iio, numpy, os, scipy, scikit-image and torchvision.
 - iio github
-- Enric's imscript github
+- Enric Meinhardts's imscript https://github.com/mnhrdt/imscript
 
 USAGE OF THE END-TO-END CODE
 ----------------------------
