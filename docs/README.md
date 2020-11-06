@@ -1,6 +1,4 @@
-#   TITLE
-
-Self-supervised training for blind multi-frame video denoising
+# Self-supervised training for blind multi-frame video denoising
 
 ### authors 
 Valéry Dewil, Jérémy Anger, Axel Davy, Thibaud Ehret, Gabriele Facciolo and Pablo Arias.
@@ -13,4 +11,6 @@ We  propose  a  self-supervised  approach  for  training multi-frame video denoi
 
 #### Materials
 
-links
+The code of the proposed method is available here:
+https://github.com/cmla/mf2f
+Dependencies and usage are described in the same page.
