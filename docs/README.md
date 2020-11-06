@@ -13,4 +13,5 @@ We  propose  a  self-supervised  approach  for  training multi-frame video denoi
 
 The code of the proposed method is available here:
 https://github.com/cmla/mf2f
+
 Dependencies and usage are described in the same page.
