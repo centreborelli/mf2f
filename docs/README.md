@@ -7,6 +7,7 @@ Valéry Dewil, Jérémy Anger, Axel Davy, Thibaud Ehret, Gabriele Facciolo and P
 
 -------------------
 
+<img width="90%" src="teaser.jpg">
 
 #### Abstract 
 
@@ -20,9 +21,7 @@ We  propose  a  self-supervised  approach  for  training multi-frame video denoi
 
 [supplementary material](https://openaccess.thecvf.com/content/WACV2021/supplemental/Dewil_Self-Supervised_Training_for_WACV_2021_supplemental.pdf)
 
-
-The code of the proposed method is available here:
-[https://github.com/cmla/mf2f](https://github.com/cmla/mf2f)
+[The code of the proposed method is available here: https://github.com/cmla/mf2f](https://github.com/cmla/mf2f)
 
 Dependencies and usage are described in the same page.
 
