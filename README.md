@@ -7,6 +7,8 @@ The script for each method are written in python3. We recommend to use a version
 You should have installed the modules argparse, iio, numpy, os, scipy, scikit-image and torchvision.
 - iio github
 - Enric Meinhardts's imscript https://github.com/mnhrdt/imscript
+The libraries libtiff, libpng, fftw3 are needed.
+The code requires parallel to parallelize the computation of the flows and masks.
 
 USAGE OF THE END-TO-END CODE
 ----------------------------
