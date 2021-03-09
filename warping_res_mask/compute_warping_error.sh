@@ -7,7 +7,7 @@ output=$4
 
 # warp frame N+1 to N using optical flow
 WFRAME1=$(printf $output/warp.tiff)
-WARP3="/home/dewil/occlu-mask/build/bin/warp-bicubic"
+WARP3="../collision_mask/build/bin/warp-bicubic"
 $WARP3 -f $flow -i $noisy1 -o $WFRAME1
 
 WOUT=$(printf $output/mask_invalid_pixels.png)
